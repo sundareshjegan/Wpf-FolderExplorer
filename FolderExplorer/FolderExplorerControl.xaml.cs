@@ -586,13 +586,9 @@ namespace FolderExplorer
 
             if (e.Key == Key.Back)
             {
-                // Check if the focused control is not a TextBox
                 if (!(Keyboard.FocusedElement is TextBox))
                 {
-                    // Call the GoBack method
                     BackButton_Click(this, e);
-
-                    // Optionally, mark the event as handled to prevent further processing
                     e.Handled = true;
                 }
             }
@@ -606,8 +602,11 @@ namespace FolderExplorer
             }
             if (e.Key == Key.Delete)
             {
-                DeleteFolder_Click(this, e);
-                e.Handled = true;
+                if (!(Keyboard.FocusedElement is TextBox))
+                {
+                    DeleteFolder_Click(this, e);
+                    e.Handled = true;
+                }
             }
             if (Keyboard.Modifiers == (ModifierKeys.Control | ModifierKeys.Shift) && e.Key == Key.N)
             {
@@ -619,12 +618,14 @@ namespace FolderExplorer
                 CopyFolder_Click(this, e);
                 e.Handled = true;
             }
-
-            // Handle Ctrl+V key combination
             if (Keyboard.Modifiers == ModifierKeys.Control && e.Key == Key.V)
             {
-                // Call the paste method
                 PasteFolder_Click(this, e);
+                e.Handled = true;
+            }
+            if ( e.Key == Key.F5)
+            {
+                RefreshButtonClick(this, e);
                 e.Handled = true;
             }
         }

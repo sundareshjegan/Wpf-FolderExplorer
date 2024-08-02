@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         MinHeight="550"
         MinWidth="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False">
 
     <Window.Resources>
         <Style TargetType="{x:Type TreeViewItem}" 
@@ -115,6 +116,9 @@
 
 
     </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo />
+    </Window.TaskbarItemInfo>
 
     <Border BorderBrush="#2D2D30" BorderThickness="5" MouseMove="Border_MouseMove" CornerRadius="5" Background="#2D2D30">
         <Grid>
